@@ -2,7 +2,14 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class PublicadosManager(models.Manager): #Gerenciador de contexto
+    def get_queryset(self):
+        return super().get_queryset().filter(status='publicado')
+
+
 class Post(models.Model):
+    objects = models.Manager()
+    publicados = PublicadosManager()
     STATUS_CHOICES = (
         ('rascunho', 'Rascunho'),
         ('publicado', 'Publicado'),
@@ -18,7 +25,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
-        ordering = ('-publicado',) #Ordenamento decrescente
+        ordering = ('-publicado',) #Ordenamento decrescente. Isso influencia a forma como os registros são armazenados na base de dados (objects.first/.last)
 
     def __str__(self):
         return self.titulo
