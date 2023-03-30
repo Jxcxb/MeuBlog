@@ -1,2 +1,2 @@
 # MeuBlog
- Projeto de criação de blog, com múltiplos níveis de usuário
+ Projeto de criação de um blog com múltiplos níveis de usuário
