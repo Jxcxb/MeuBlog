@@ -1,6 +1,7 @@
-from django.urls import path, include
-from .views import ListarPostsListView
+from django.urls import path
+from .views import ListarPosts, IndexView
 
 urlpatterns = [
-    path('', ListarPostsListView.as_view(), name='home'),
+    path('', IndexView.as_view(), name='home'),
+    path('post/<slug:slug>', ListarPosts.as_view(), name='post'),
 ]

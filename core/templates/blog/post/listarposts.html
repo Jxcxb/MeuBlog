@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Meus posts</title>
-</head>
-<body>
-    {% for p in posts %}
-    <h2>{{ p.titulo }}</h2>
-    <h3>Autor: {{ p.autor }}</h3>
-    <p>{{ p.corpo }}</p>
-    <p>&nbsp;</p>
-    {% endfor %}
+{% load static %}
 
-</body>
-</html>
+
+{% for item in posts %}
+
+<section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1" xmlns="http://www.w3.org/1999/html">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md">
+                <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    {{ item.titulo }} </br> <i> Escrito por {{ item.autor }}. </i>
+                </h6>
+            </div>
+
+            <div class="col-md-12 col-lg-6">
+                <p class="mbr-text mbr-fonts-style display-7">{{ item.corpo }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section data-bs-version="5.1" class="content11 cid-tzVh8oOL0w" id="content11-2">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="post/{{ item.slug }}">Ver post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endfor %}
+{% include "includes/paginator.html" with page=page_obj %}
