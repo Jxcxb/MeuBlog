@@ -1,7 +1,7 @@
 {% load static %}
 
 
-{% for item in posts %}
+{% for post in posts %}
 
 <section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1" xmlns="http://www.w3.org/1999/html">
 
@@ -9,12 +9,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md">
                 <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
-                    {{ item.titulo }} </br> <i> Escrito por {{ item.autor }}. </i>
+                    {{ post.titulo }}
                 </h6>
+                <p class="mbr-text mbr-fonts-style mb-4 display-4">
+                            <i> Escrito por {{ post.autor }}. </i>
+                        </p>
             </div>
 
             <div class="col-md-12 col-lg-6">
-                <p class="mbr-text mbr-fonts-style display-7">{{ item.corpo }}</p>
+                <p class="mbr-text mbr-fonts-style display-7">{{ post.corpo }}</p>
             </div>
         </div>
     </div>
@@ -24,7 +27,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="post/{{ item.slug }}">Ver post</a>
+                <div class="mbr-section-btn align-center">
+                    <a class="btn btn-primary display-4" href="post/{{ post.slug }}">Ver post</a>
                 </div>
             </div>
         </div>

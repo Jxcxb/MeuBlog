@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, DetailView
 
 from core.models import Post
 
@@ -10,13 +10,15 @@ class IndexView(ListView):
     queryset = Post.publicados.all()
     paginate_by = 2
 
-class ListarPosts(TemplateView):
 
-    def get_context_data(self, **kwargs):
-        context = super(ListarPosts, self).get_context_data(**kwargs)
-        queryset = Post.publicados.get(slug=kwargs['slug'])
-        context.update({'item':queryset})
-        return context
+class ListarPostsListView(ListView):
+    context_object_name = 'posts'
+    template_name = "blog/listarposts.html"
+    queryset = Post.publicados.all()
+    paginate_by = 2
 
-    context_object_name = 'item'
+
+class DetalhePostView(DetailView):
     template_name = "blog/post/detalheposts.html"
+    context_object_name = 'post'
+    queryset = Post.publicados.all()
